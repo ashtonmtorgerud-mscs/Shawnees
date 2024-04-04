@@ -3,27 +3,28 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Shawnees Bar and Grill</title>
+    <title>Shawnees Bar & Grill</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="ShawneesFavIcon.png">
 </head>
 
 <body class="bg-gray-100">
 
-    <div class="fixed z-50 shadow-xl w-full">
+    <div class="" id="app">
+
+    <div class="fixed z-50 shadow-xl w-full" id="navbar">
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4h-16 py-0 my-0">
-                <a href="#home"
-                    class="flex items-center space-x-3 rtl:space-x-reverse h-16 py-0 my-0">
+                <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse h-16 py-0 my-0">
                     <img src="ShawneesBarAndGrill.png" class="h-16 py-1 my-0 rounded-full shadow"
                         alt="Shawnee's Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Shawnee's Bar
-                        And
-                        Grill</span>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Shawnee's Bar & Grill</span>
                 </a>
-                <button data-collapse-toggle="navbar-default" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-default" aria-expanded="false">
+                <button data-collapse-toggle="navbar-default" type="button"  @click="showNavBar()"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    aria-controls="navbar-default" aria-expanded="true">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 17 14">
@@ -31,24 +32,24 @@
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
-                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <div class="w-full md:block md:w-auto" v-bind:class="{ 'hidden': navbarToggle }" id="navbar-default">
                     <ul
-                        class="font-medium flex flex-col p-4 md:p-0 mt-4 mr-1 text-xl border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 mr-1 text-xl border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                         <li>
-                            <a href="#home"
-                                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-yellow-700 md:p-0 dark:text-white md:dark:text-orange-500"
-                                aria-current="page">Home</a>
+                            <a href="#home" @click="showNavBar()"
+                                class="block py-2 px-3 text-white bg-yellow-700 rounded md:bg-transparent md:text-yellow-700 md:p-0 dark:text-white md:dark:text-orange-500"
+                                aria-current="page">Home</a> 
                         </li>
                         <li>
-                            <a href="#about"
+                            <a href="#about" @click="showNavBar()"
                                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-700 md:p-0 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
                         </li>
                         <li>
-                            <a href="#menu"
+                            <a href="#menu" @click="showNavBar()"
                                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-700 md:p-0 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Menu</a>
                         </li>
                         <li>
-                            <a href="#contact"
+                            <a href="#contact" @click="showNavBar()"
                                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-700 md:p-0 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                         </li>
                     </ul>
@@ -61,12 +62,12 @@
 
 
     <!-- https://w.forfun.com/fetch/32/32dbe3408361c6f6feff8d180c818390.jpeg -->
-    <div class="bg-fixed relative flex flex-col items-center justify-center h-[calc(100vh-65px)] bg-cover bg-center py-64" id="home"
-        style="background-image: url('ShawneesInside.png'); background-color: white;">
+    <div class="bg-fixed relative flex flex-col items-center justify-center h-[calc(100vh-65px)] bg-cover bg-center py-64"
+        id="home" style="background-image: url('ShawneesInside.png'); background-color: white;">
         <div class="mt-5">
             <h1 class="font-bold text-white text-center text-base text-4xl md:text-5xl lg:text-6xl shadow"
                 style="text-shadow: 3px 3px 3px #000000;">
-                <span class="text-4xl">Welcome to</span> <br> Shawnee's Bar and Grill
+                <span class="text-4xl">Welcome to</span> <br> Shawnee's Bar & Grill
             </h1>
             <a href="#menu"><button
                     class="mt-6 px-8 pt-4 pb-5 bg-blue-500 font-bold text-white rounded mx-auto block rounded-full shadow-2xl"
@@ -157,33 +158,34 @@
             class="flex flex-wrap text-xl font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 justify-center">
             <li class="me-2">
                 <p href="#menu" aria-current="page"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300 active" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 1 }"
-                    @click="showDiv(1, $event)" >Appetizers</p>
+                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300 active"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 1 }" @click="showDiv(1, $event)">Appetizers
+                </p>
             </li>
             <li class="me-2">
-                <p href="#menu"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 2 }"
-                    @click="showDiv(2, $event)" :class="selected" >Burgers</p>
+                <p href="#menu" class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 2 }" @click="showDiv(2, $event)"
+                    :class="selected">Burgers</p>
             </li>
             <li class="me-2">
-                <p href="#menu"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 3 }"
-                    @click="showDiv(3, $event)" :class="selected" >Sandwiches & Wraps</p>
+                <p href="#menu" class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 3 }" @click="showDiv(3, $event)"
+                    :class="selected">Sandwiches & Wraps</p>
             </li>
             <li class="me-2">
-                <p href="#menu"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-800 hover:bg-gray-300" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 4 }"
-                    @click="showDiv(4, $event)" :class="selected" >Dinners</p>
+                <p href="#menu" class="inline-block p-4 rounded-t-lg hover:text-yellow-800 hover:bg-gray-300"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 4 }" @click="showDiv(4, $event)"
+                    :class="selected">Dinners</p>
             </li>
             <li class="me-2">
-                <p href="#menu"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 5 }"
-                    @click="showDiv(5, $event)" :class="selected" >Little Tyke's Menu</p>
+                <p href="#menu" class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 5 }" @click="showDiv(5, $event)"
+                    :class="selected">Little Tyke's Menu</p>
             </li>
             <li class="me-2">
-                <p href="#menu"
-                    class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300" :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 6 }"
-                    @click="showDiv(6, $event)" :class="selected" >Beverages</p>
+                <p href="#menu" class="inline-block p-4 rounded-t-lg hover:text-yellow-600 hover:bg-gray-300"
+                    :class="{ 'text-yellow-800 bg-gray-200': activeDiv === 6 }" @click="showDiv(6, $event)"
+                    :class="selected">Beverages</p>
             </li>
         </ul>
 
@@ -192,7 +194,8 @@
 
                 <div class="grid grid-cols-2 gap-4 w-3/4 align-items-center justify-center mb-5">
                     <div class="p-4 border">
-                        <h2 class="text-xl font-bold">Waffle Fries Supreme 9.50 <span class="text-yellow-500 italic">Signature</span> </h2>
+                        <h2 class="text-xl font-bold">Waffle Fries Supreme 9.50 <span
+                                class="text-yellow-500 italic">Signature</span> </h2>
                         <p>Criss-cross seasoned waffle fries topped with onions, black olives, bacon bits, nacho cheese
                             and sour cream.</p>
                     </div>
@@ -221,20 +224,23 @@
                         <h2 class="text-xl font-bold">Jalapeño Cheese Curds 8.50</h2>
                         <p>Lightly battered cheese curds filled with white cheese and Jalapeño.</p>
                     </div>
-                    
+
                     <div class="p-4 border">
-                        <h2 class="text-xl font-bold">Nachos Supreme 8.50 <span class="text-yellow-500 italic">Signature</span> </h2>
+                        <h2 class="text-xl font-bold">Nachos Supreme 8.50 <span
+                                class="text-yellow-500 italic">Signature</span> </h2>
                         <p>Signature Seasoned, freshly fried nachos topped with onions, black olives, bacon bits, nacho
                             cheese and sour cream.</p>
                     </div>
 
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Dill Pickle Cheese Curds 10.75</h2>
-                        <p>Lihgtly Battered cheese curds filled with white cheese and dill seasoning. Served with a dill pickle sauce..</p>
+                        <p>Lihgtly Battered cheese curds filled with white cheese and dill seasoning. Served with a dill
+                            pickle sauce..</p>
                     </div>
 
                     <div class="p-4 border">
-                        <h2 class="text-xl font-bold">Nachos and Cheese 4.50 <span class="text-yellow-500 italic">Signature</span> </h2>
+                        <h2 class="text-xl font-bold">Nachos and Cheese 4.50 <span
+                                class="text-yellow-500 italic">Signature</span> </h2>
                         <p>Signature Seasoned, freshly fried nachos served with a cup of hot nacho cheese.</p>
                     </div>
 
@@ -270,35 +276,42 @@
 
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Santa Fe Mexican Egg Rolls 7.95</h2>
-                        <p>Three large egg rolls stuffed with chicken, peppers, corn, black beans, zesty cheese, filling and served with
+                        <p>Three large egg rolls stuffed with chicken, peppers, corn, black beans, zesty cheese, filling
+                            and served with
                             salsa and sour cream.</p>
                     </div>
                 </div>
             </div>
-            <h2 class="text-xl font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional Bacon 1.00</h2>
+            <h2 class="text-xl font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional
+                Bacon 1.00</h2>
 
         </template>
 
         <template v-if="activeDiv === 2">
 
-            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5 px-5">Burgers are 1/3 pound. <br> Served with: Choice of cheddar, provolone, American or pepper jack cheese a side of<br>nachos and cheese, French fries, potato salad or coleslaw</h1>
+            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5 px-5">Burgers
+                are 1/3 pound. <br> Served with: Choice of cheddar, provolone, American or pepper jack cheese a side
+                of<br>nachos and cheese, French fries, potato salad or coleslaw</h1>
             <div class="flex justify-center align-items-center mb-0 pb-5 mx-auto">
 
                 <div class="grid grid-cols-2 gap-4 w-3/4 align-items-center justify-center mb-5">
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Bleu Cheeseburger 9.75</h2>
-                        <p>Topped with smoked applewood bacon, American Swiss cheese, bleu cheese dressing, lettuce, onions and
+                        <p>Topped with smoked applewood bacon, American Swiss cheese, bleu cheese dressing, lettuce,
+                            onions and
                             a mild Cajun seasoning.</p>
                     </div>
 
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Crunchy Bacon BBQ Burger 9.75</h2>
-                        <p>1/3-pound patty topped with smoked applewood bacon and crunchy onion rings dripping with smoky BBQ sauce and cheddar cheese.
+                        <p>1/3-pound patty topped with smoked applewood bacon and crunchy onion rings dripping with
+                            smoky BBQ sauce and cheddar cheese.
                             California Burger 9.25.</p>
                     </div>
 
                     <div class="p-4 border">
-                        <h2 class="text-xl font-bold">Shawnee Burger 9.75 <span class="text-yellow-500 italic">Signature</span> </h2>
+                        <h2 class="text-xl font-bold">Shawnee Burger 9.75 <span
+                                class="text-yellow-500 italic">Signature</span> </h2>
                         <p>Three large egg rolls filled with chicken, black beans, corn, jalapeno peppers and spicy
                             cheese. Served with salsa and sour cream.</p>
                     </div>
@@ -317,10 +330,11 @@
                         <h2 class="text-xl font-bold">Double Cheeseburger 11.95</h2>
                         <p>Two 1/3-pound patties dripping with your favorite kind of cheese.</p>
                     </div>
-                    
+
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Chipotle Burger 9.75</h2>
-                        <p>1/3-pound patty with smoked applewood bacon, dripping with melted pepper jack cheese and chipotle mayonnaise sauce.</p>
+                        <p>1/3-pound patty with smoked applewood bacon, dripping with melted pepper jack cheese and
+                            chipotle mayonnaise sauce.</p>
                     </div>
 
                     <div class="p-4 border">
@@ -330,7 +344,8 @@
 
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Patty Melt 9.75</h2>
-                        <p>An all-time favorite! 1/3-pound patty topped with grilled onion and American Swiss Cheese, served on Texas Toast.</p>
+                        <p>An all-time favorite! 1/3-pound patty topped with grilled onion and American Swiss Cheese,
+                            served on Texas Toast.</p>
                     </div>
 
                     <div class="p-4 border">
@@ -351,58 +366,71 @@
 
                 </div>
             </div>
-            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional Bacon 1.00</h2>
+            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional
+                Bacon 1.00</h2>
         </template>
 
         <template v-if="activeDiv === 3">
-            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Served with: Choice of nachoes and cheese, French fires, coleslaw, or potato salad.</h1>
+            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Served with:
+                Choice of nachoes and cheese, French fires, coleslaw, or potato salad.</h1>
 
             <div class="flex justify-center align-items-center mb-0 pb-5 mx-auto">
 
                 <div class="grid grid-cols-2 gap-4 w-3/4 align-items-center justify-center mb-5">
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Marinated Chicken Sandwich 9.25</h2>
-                        <p>TSeasoned marinated grilled chicken breast topped with lettuce, tomato, onion, mayo and melted American Swiss cheese.</p>
+                        <p>TSeasoned marinated grilled chicken breast topped with lettuce, tomato, onion, mayo and
+                            melted American Swiss cheese.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">French Dip 9.75</h2>
-                        <p>8 oz. Chopped beef sirloin grilled to perfection, served on a grilled hoagie bun with a cup of au jus.</p>
+                        <p>8 oz. Chopped beef sirloin grilled to perfection, served on a grilled hoagie bun with a cup
+                            of au jus.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">BLT 9.50</h2>
-                        <p>Applewood smoked bacon, lettuce, tomato and mayonnaise served on toasted wheat berry bread.</p>
+                        <p>Applewood smoked bacon, lettuce, tomato and mayonnaise served on toasted wheat berry bread.
+                        </p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Philly Sandwich 10.50</h2>
-                        <p>Chopped beef, grilled to perfection, topped with grilled green peppers and onions and dripping with melted American Swiss cheese, served on a grilled hoagie bun.</p>
+                        <p>Chopped beef, grilled to perfection, topped with grilled green peppers and onions and
+                            dripping with melted American Swiss cheese, served on a grilled hoagie bun.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Chicken Wrap 10.25</h2>
-                        <p>Seasoned, marinated grilled chicken breast, smoked applewood bacon, chopped onions, tomato, lettuce, shredded Parmesan cheese and chipotle and ranch sauce wrapped in a soft garlic & herb tortilla.</p>
+                        <p>Seasoned, marinated grilled chicken breast, smoked applewood bacon, chopped onions, tomato,
+                            lettuce, shredded Parmesan cheese and chipotle and ranch sauce wrapped in a soft garlic &
+                            herb tortilla.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Southwest Wrap 10.25</h2>
-                        <p>Seasoned, marinated grilled chicken breast, smoked applewood bacon, green peppers, onions, lettuce, shredded cheddar cheese and zesty BBQ and chipotle sauce wrapped in a soft jalapeno& cheese tortilla.</p>
+                        <p>Seasoned, marinated grilled chicken breast, smoked applewood bacon, green peppers, onions,
+                            lettuce, shredded cheddar cheese and zesty BBQ and chipotle sauce wrapped in a soft
+                            jalapeno& cheese tortilla.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Cod Sandwich 9.75</h2>
                         <p>Hand dipped Beer battered cod topped with lettuce, tomato and tartar sauce.</p>
                     </div>
-                    
+
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold"></h2>
                         <p></p>
                     </div>
                 </div>
             </div>
-            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional Bacon 1.00</h2>
+            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional
+                Bacon 1.00</h2>
         </template>
 
 
         <template v-if="activeDiv === 4">
 
 
-            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Dinners served with potatoes and a house salad. <br> Baskets & Salads served with choice of French fries or Texas toast and a choice of coleslaw or potato salad.</h1>
+            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Dinners
+                served with potatoes and a house salad. <br> Baskets & Salads served with choice of French fries or
+                Texas toast and a choice of coleslaw or potato salad.</h1>
             <div class="flex justify-center align-items-center mb-0 pb-5 mx-auto">
 
                 <div class="grid grid-cols-2 gap-4 w-3/4 align-items-center justify-center mb-5">
@@ -411,12 +439,14 @@
                         <p>Seasoned tenderloin tips served with sauteed fresh mushrooms.</p>
                     </div>
                     <div class="p-4 border">
-                        <h2 class="text-xl font-bold">Shrimp Scampi<span class="text-yellow-500 italic">Signature</span></h2>
+                        <h2 class="text-xl font-bold">Shrimp Scampi<span class="text-yellow-500 italic">Signature</span>
+                        </h2>
                         <p>6 pc. (half pound) Tiger shrimp sauteed in butter, garlic and smoked paprika.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Hand dipped Cod Basket 11.95</h2>
-                        <p>Applewood smoked bacon, lettuce, tomato and mayonnaise served on toasted wheat berry bread.</p>
+                        <p>Applewood smoked bacon, lettuce, tomato and mayonnaise served on toasted wheat berry bread.
+                        </p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Chicken Strip Basket 10.25</h2>
@@ -428,25 +458,30 @@
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">House Salad 8.95</h2>
-                        <p>Fresh spring mix lettuce, onion, tomato, green pepper, finely shredded Parmesan cheese and sliced almonds and croutons.</p>
+                        <p>Fresh spring mix lettuce, onion, tomato, green pepper, finely shredded Parmesan cheese and
+                            sliced almonds and croutons.</p>
                     </div>
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Grilled Chicken Salad 10.95 </h2>
-                        <p>Fresh shredded seasoned chicken breast atop a pile of spring mix lettuce, tomato, onion, green pepper, finely shredded Parmesan cheese, sliced almonds and croutons.</p>
+                        <p>Fresh shredded seasoned chicken breast atop a pile of spring mix lettuce, tomato, onion,
+                            green pepper, finely shredded Parmesan cheese, sliced almonds and croutons.</p>
                     </div>
-                    
+
                     <div class="p-4 border">
                         <h2 class="text-xl font-bold">Taco Salad 10.95</h2>
-                        <p>Seasoned beef, fresh lettuce, tomato, onion, black olives, shredded cheese, sour cream and salsa. Served on our Homemade Nachos.</p>
+                        <p>Seasoned beef, fresh lettuce, tomato, onion, black olives, shredded cheese, sour cream and
+                            salsa. Served on our Homemade Nachos.</p>
                     </div>
                 </div>
             </div>
-            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional Bacon 1.00</h2>
+            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional
+                Bacon 1.00</h2>
         </template>
 
         <template v-if="activeDiv === 5">
 
-            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Must be 12 or under. <br> Served with: choice of nachoes and cheese or French Fries</h1>
+            <h1 class="flex justify-center align-items-center mb-0 pb-5 mx-auto font-bold text-center my-5">Must be 12
+                or under. <br> Served with: choice of nachoes and cheese or French Fries</h1>
             <div class="flex justify-center align-items-center mb-0 pb-5 mx-auto">
 
                 <div class="grid grid-cols-2 gap-4 w-3/4 align-items-center justify-center mb-5">
@@ -477,7 +512,8 @@
 
                 </div>
             </div>
-            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional Bacon 1.00</h2>
+            <h2 class="text-lg font-bold text-center mx-auto">Additional Sauces and Condiments .25 each. Additional
+                Bacon 1.00</h2>
         </template>
 
         <template v-if="activeDiv === 6">
@@ -503,7 +539,7 @@
 
 
 
-    
+
     <div class="bg-fixed h-[calc(100vh-65px)] bg-cover bg-center py-64 blur-3xl"
         style="background-image: url(Shawnee.png);">
     </div>
@@ -515,52 +551,55 @@
                 Contact
             </h1>
         </div>
-    
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Phone</h2>
-                <p>Call and place an order with:</p> <a href="tel:507-864-2073" class="text-blue-600 hover:underline">+1 (507) 864-2073</a>
+                <p>Call and place an order with: <br> +1 (507) 864-2073</p>
             </div>
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Address</h2>
                 <p>Visit us today at <br>220 S Mill St, Rushford, MN 55971</p>
             </div>
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Facebook</h2>
-                <a href="#https://www.facebook.com/Shawneesbarandgrill/" class="text-blue-600 hover:underline">Visit us on Facebook</a>
+                <a class="fa fa-facebook text-blue-600 hover:underline" href="https://www.facebook.com/Shawneesbarandgrill/" class=""> Visit us
+                    on Facebook</a>
             </div>
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Email</h2>
-                <p>Please write us an email at <br> <a href="mailto:Shawneesbar@gmail.com" class="text-blue-600 hover:underline">Shawneesbar@gmail.com</a></p>
+                <p>Please write us an email at <br>Shawneesbar@gmail.com</p>
             </div>
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Hours Opened</h2>
-                <p>Mon-Fri: 9am - 6pm<br>Sat-Sun: 10am - 4pm</p>
+                <p>Tuesday-Saturday: 11am <br>Sunday-Monday: Closed</p>
             </div>
-    
+
             <div class="bg-white rounded-lg shadow-md p-4">
                 <h2 class="text-lg font-semibold mb-2">Now Hiring</h2>
                 <p>We are currently hiring for various positions. <br> Apply today!</p>
             </div>
-          
+
         </div>
     </div>
-    
 
-    
+    </div>
+
+
 
 </body>
 
 <footer class="flex justify-center text-center mx-auto mt-0">
-    <div class="bg-gray-900 w-full h5 py-8" style="background: linear-gradient(to bottom, #3498db, #748ed6);">
+    <div class="bg-gray-900 w-full h5 py-8" style="background: #3498db">
         <h3 class="text-white font-bold text-lg" style="text-shadow: 1px 1px #000000;">Developed by <a
                 href="https://www.linkedin.com/in/ashton-torgerud-a3b54025b/" style="text-decoration: underline;">Ashton
                 Torgerud</a> | @ashtorged.outlook.com</h3>
+                <p class="text-white">© 2024 Ashton Torgerud | © 2024 Shawnees Bar & Grill</p>
     </div>
 </footer>
 
@@ -570,16 +609,21 @@
 
 <script>
     new Vue({
-        el: '#menu',
+        el: '#app',
         data: {
             activeDiv: 2,
+            navbarToggle: false
         },
         methods: {
             showDiv(divNumber, event) {
                 this.activeDiv = divNumber;
+            },
+            showNavBar(){
+                this.navbarToggle = !this.navbarToggle;
             }
         }
     });
+
 </script>
 
 
